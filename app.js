@@ -20,7 +20,7 @@ mongoDB.once('open',()=>{
 let indexRouter = require('./routes/index');
 
 //setting the rout to myFv page
-let favouritRouter = require('./routes/myFavourit');
+let favouritRouter = require('./routes/favourit');
 
 let app = express();
 

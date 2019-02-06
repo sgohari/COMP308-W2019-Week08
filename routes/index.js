@@ -22,4 +22,8 @@ router.get('/contact', function(req, res, next) {
   res.render('index', { title: 'Contact' });
 });
 
+router.get('/favourit', function(req, res, next) {
+  res.render('index', { title: 'Favourit' });
+});
+
 module.exports = router;

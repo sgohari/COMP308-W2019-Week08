@@ -4,7 +4,7 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 //reference to the db schema
-let myFavourit = require('../models/myFavourits');
+let myFavourit = require('../models/favourits');
 
 /** GET myFavourit list page -READ operations */
 router.get('/', (req, res, next)=>{
@@ -15,10 +15,10 @@ router.get('/', (req, res, next)=>{
         }
         else{
             console.log(fvList);
-            /* res.render('myFavourit/index', {
+            res.render('myFavourit/index', {
                 title: 'Favourit List',
                 fvList: fvList
-            }); */
+            });
         }
     });
 });

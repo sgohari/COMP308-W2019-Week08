@@ -35,7 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use('/', indexRouter);
-app.use('/fvList',favouritRouter);
+app.use('/favourite-List', favouritRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

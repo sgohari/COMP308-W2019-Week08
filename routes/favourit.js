@@ -8,16 +8,16 @@ let myFavourit = require('../models/favourits');
 
 /** GET myFavourit list page -READ operations */
 router.get('/', (req, res, next)=>{
-    myFavourit.find((err,fvList)=>{
+    myFavourit.find((err, favouriteList)=>{
 
         if(err){
             return console.error(err);
         }
         else{
-            console.log(fvList);
-            res.render('myFavourit/index', {
+           //console.log(favouriteList);
+            res.render('favourit/index', {
                 title: 'Favourit List',
-                fvList: fvList
+                favouriteList: favouriteList
             });
         }
     });

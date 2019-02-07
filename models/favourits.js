@@ -1,15 +1,15 @@
 let mongoose = require('mongoose');
 
 //create a model class
-
 let myFavouritSchema = mongoose.Schema({
-    firstName: String,
-    lastName:String,
-    favouritCar:String,
-    favouritSubject:String        
+    FirstName: String,
+    LastName:String,
+    FavouritCar:String,
+    FavouritSport:String       
     },
+
     {
-        collection:"myFavourit"
+        collection:"myCollection"
     });
 
-    module.exports=mongoose.model('myFavourit', myFavouritSchema);
+    module.exports=mongoose.model('nasir', myFavouritSchema);

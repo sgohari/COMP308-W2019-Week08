@@ -13,6 +13,7 @@
                     id="FirstNameTextField" 
                     placeholder="Enter First Name"
                     name="firstName"
+                    value="<%= favorite.FirstName %>"
                     required>
                 </div>
 
@@ -22,6 +23,7 @@
                     id="LastNameTextField" 
                     placeholder="Enter Last Name"
                     name="lastName"
+                    value="<%= favorite.LastName %>"
                     required>
                 </div>
 
@@ -31,12 +33,13 @@
                     id="AgeTextField" 
                     placeholder="Enter Age"
                     name="age"
+                    value="<%= favorite.Age  %>"
                     required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">
                 <i class="fa fa-edit"></i> Submit</button>
-            <a href="/contact-list" class="btn btn-warning">
+            <a href="/favourite-List" class="btn btn-warning">
                     <i class="fa fa-undo"></i> Cancel</a>
             </form>
 

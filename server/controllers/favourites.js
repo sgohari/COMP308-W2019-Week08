@@ -1,13 +1,10 @@
 let express = require('express');
 let router = express.Router();
-//for using mongo
-let mongoose = require('mongoose');
 
 //reference to the db schema
 let myFavourit = require('../models/favourits');
 
-/** GET myFavourit list page -READ operations */
-router.get('/', (req, res, next)=>{
+module.exports.displayFavouriteList = (req, res, next)=>{
     myFavourit.find((err, favouriteList)=>{
 
         if(err){
@@ -21,20 +18,16 @@ router.get('/', (req, res, next)=>{
             });
         }
     });
-});
-
-// GET route for the add page
-
-router.get('/add',(req, res, next)=>{
+}
+module.exports.displayAddFavourits = (req, res, next)=>{
 
     res.render('favourit/add', {
         title: 'Add new Favourites'
     });
 
-});
-
-/*Post Route */
-router.post('/add',(req, res, next)=>{
+}
+//updated controller
+module.exports.processAddFavouritList =(req, res, next)=>{
 
     console.log(req.body)
 
@@ -55,13 +48,13 @@ router.post('/add',(req, res, next)=>{
             res.redirect('/favourite-List');
         }
     });
-});
+}
 
-/*GET request display EDIT page */
-router.get('/edit/:id', (req, res, next)=>{
+module.exports.displayEditPage =(req, res, next)=>{
 
     let id=req.params.id;
     //console.log(id);
+    
     myFavourit.findById(id,(err, fvObject)=>{
 
         if(err){
@@ -77,6 +70,44 @@ router.get('/edit/:id', (req, res, next)=>{
         }
     });
 
-});
+}
 
-module.exports = router;
+module.exports.proccessEditPage=(req, res, next)=>{
+
+    let id=req.params.id;
+    //use the above id to update all property. or all
+
+    let updateDB = myFavourit({
+
+        "_id": id,
+        "FirstName": req.body.firstName,
+        "LastName": req.body.lastName,
+        "Age":req.body.age
+    });
+
+    myFavourit.update({ _id:id }, updateDB, (err)=>{
+
+        if(err){
+            console.log(err);
+            res.end(err);
+        }else{
+            res.redirect('/favourite-List');
+        }
+    })
+}
+
+module.exports.performDelete = (req, res, next)=>{
+    
+    let id = req.params.id;
+
+    myFavourit.remove({_id: id}, (err) => {
+        if(err) {
+            console.log(err);
+            res.end(err);
+        }
+        else {
+            // refresh the contact list
+            res.redirect('/favourite-List');
+        }
+    });
+}

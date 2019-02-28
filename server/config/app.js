@@ -54,10 +54,6 @@ app.use(session({
 }));
 app.use('/', indexRouter);
 
-
-
-
-
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());

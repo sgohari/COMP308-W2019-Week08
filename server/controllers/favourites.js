@@ -98,8 +98,9 @@ module.exports.proccessEditPage=(req, res, next)=>{
 
 module.exports.performDelete = (req, res, next)=>{
     
+    //consol
     let id = req.params.id;
-
+    console.log("id: " + id);
     myFavourit.remove({_id: id}, (err) => {
         if(err) {
             console.log(err);

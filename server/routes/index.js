@@ -17,4 +17,19 @@ router.get('/contact', indxController.displayContactPage);
 
 router.get('/favourit', indxController.displayFavouritePage);
 
+//Get display the Login Page
+router.get('/login', indxController.displayLoginPage);
+
+//Week06 class with the follow routes.
+//Post - processes the login page
+router.get('/login', indxController.processLoginPage);
+//Get - Display the user registration page
+router.get('/register', indxController.displayRegisterPage);
+
+//POST - process the user registration Page
+router.get('/register', indxController.processRegisterPage);
+//GET perform user logout
+router.get('/logout', indxController.performLogout);
+
+
 module.exports = router;

@@ -52,13 +52,13 @@ app.use(session({
   saveUninitialized: false,
   resave: false
 }));
-app.use('/', indexRouter);
+
 
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-// pasport user configuration
+// passport user configuration
 
 // create a User model
 let userModel = require('../models/user');
@@ -71,6 +71,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use('/', indexRouter);
 app.use('/favourite-List', favouritRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

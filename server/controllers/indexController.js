@@ -4,7 +4,9 @@ let passport = require('passport');
 
 let mongoose = require('mongoose');
 
-let userModel = require('../models/user');
+// define the User Model
+let userModel = require("../models/user");
+let User = userModel.User; // alias
 
 
 module.exports.displayHomePage =(req, res, next)=> {
@@ -49,27 +51,25 @@ module.exports.displayHomePage =(req, res, next)=> {
   
   module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local', 
-    (err, user, info) => {
+  (err, user, info) => {
+    // server error?
+    if(err) {
+      return next(err);
+    }
+    // is there a user login error?
+    if(!user) {
+      req.flash("loginMessage", "Authentication Error");
+      return res.redirect('/login');
+    }
+    req.logIn(user, (err) => {
       // server error?
       if(err) {
         return next(err);
       }
-      // is there a user login error?
-      if(!user) {
-        req.flash("loginMessage", "Authentication Error");
-        return res.redirect('/login');
-      }
-      req.logIn(user, (err) => {
-        // server error?
-        if(err) {
-          return next(err);
-        }
-        return res.redirect('/favourite-List');
-      });
-    })(req, res, next);
-  }
-  
-  
+      return res.redirect('/favourite-List');
+    });
+  })(req, res, next);
+}
   
   module.exports.displayRegisterPage = (req, res, next) => {
     if (!req.user) {
@@ -117,7 +117,6 @@ module.exports.displayHomePage =(req, res, next)=> {
       }
     });
   };
-  
   
   module.exports.performLogout = (req, res, next) => {
     req.logout();

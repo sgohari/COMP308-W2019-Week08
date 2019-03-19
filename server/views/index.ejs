@@ -5,7 +5,7 @@
 
   <h1 class="display-4">Welcome <%= title %></h1>
 
-<% if(title=="Favourit"){%>
+<% if(title=="Favourit" && (displayName=="admin")){%>
 <a class="btn btn-primary" href="/favourite-List" role="button">Favourit List</a>
 <%} %>
 

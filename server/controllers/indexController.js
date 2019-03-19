@@ -37,16 +37,16 @@ module.exports.displayHomePage =(req, res, next)=> {
     displayName: req.user ? req.user.displayName:' ' });
   }
   module.exports.displayLoginPage = (req, res, next) => {
-    // check if user is already logged in
-    if (!req.user) {
-      res.render("auth/login", {
-        title: "Login",
-        messages: req.flash("loginMessage"),
-        displayName: req.user ? req.user.displayName : ""
-      });
-    } else {
-      return res.redirect("/");
-    }
+      // check if user is already logged in
+  if (!req.user) {
+    res.render("auth/login", {
+      title: "Login",
+      messages: req.flash("loginMessage"),
+      displayName: req.user ? req.user.displayName : ""
+    });
+  } else {
+    return res.redirect("/");
+  }
   };
   
   module.exports.processLoginPage = (req, res, next) => {

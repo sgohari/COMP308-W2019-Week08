@@ -52,7 +52,11 @@
               >
             </li>
 
-             <% if(typeof displayName == 'string' && displayName) { %>
+            <li>
+
+          </li>
+          
+          <% if(typeof displayName == 'string' && displayName) { %>
             <li class="navbar-text">
               <i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %>
             </li>
@@ -62,6 +66,7 @@
             <li class="nav-item"><a href="/login" class="nav-link">
               <i class="fa fa-lg fa-sign-in"></i> Login</a></li>
             <% } %>
+            
           </ul>
         </div>
       </nav>

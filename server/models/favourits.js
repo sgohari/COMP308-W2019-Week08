@@ -8,7 +8,7 @@ let favouriteSchema = mongoose.Schema({
     },
 
     {
-        collection:"favourites"
+        collection:"tb"
     });
 
 

@@ -1,6 +1,6 @@
 {
-  "name": "comp308-lab6",
-  "version": "0.0.1",
+  "name": "comp308-lab08",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "node server.js"

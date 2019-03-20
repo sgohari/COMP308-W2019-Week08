@@ -1,14 +1,15 @@
 let express = require('express');
 let router = express.Router();
 let passport = require('passport');
-
+let jwt = require('jsonwebtoken');
+let DB = require('../config/db');
 let mongoose = require('mongoose');
 
 // define the User Model
 let userModel = require("../models/user");
 let User = userModel.User; // alias
 
-
+/*
 module.exports.displayHomePage =(req, res, next)=> {
     res.render('index', { title: 'Home' , 
     displayName: req.user ? req.user.displayName:' '});
@@ -48,7 +49,7 @@ module.exports.displayHomePage =(req, res, next)=> {
     return res.redirect("/");
   }
   };
-  
+  */
   module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local', 
   (err, user, info) => {
@@ -70,7 +71,7 @@ module.exports.displayHomePage =(req, res, next)=> {
     });
   })(req, res, next);
 }
-  
+  /*
   module.exports.displayRegisterPage = (req, res, next) => {
     if (!req.user) {
       res.render("auth/register", {
@@ -82,7 +83,7 @@ module.exports.displayHomePage =(req, res, next)=> {
       return res.redirect("/");
     }
   };
-  
+  */
   module.exports.processRegisterPage = (req, res, next) => {
     // define a new user object
     let newUser = new User({
